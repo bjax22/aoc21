@@ -9,16 +9,16 @@ if debug_input
 end
 
 l,w,h = 0
-total_paper_area = 0
+total_ribbon_needed = 0
 input.each do |line|
     l,w,h = line.split('x').map {|s| s.to_i}
     puts "l: #{l}; w: #{w}; h: #{h}" if debug
-    s1 = [l,w,h].sort[0]
-    s2 = [l,w,h].sort[1]
-    
+    ribbon_length = [[l,w,h].sort[0] * 2,[l,w,h].sort[1] * 2].sum
+    cubic_volume = l*w*h
 #    area = [l*h,w*h,l*w].sum * 2 + [l*h,w*h,l*w].min
-#    puts "Package area: #{area}" if debug
-    total_paper_area += area
+    puts "Ribbon length: #{ribbon_length}; Cubic volume: #{cubic_volume}" if debug
+    total_ribbon_needed += [ribbon_length, cubic_volume].sum
+
 end
 
-puts "Total paper needed: #{total_paper_area}"
+puts "Total ribbon needed: #{total_ribbon_needed}"
