@@ -4,6 +4,4 @@ debug = 1 > 2
 debug_input = 1 > 2
 input = File.readlines(inputfilename)
 
-if debug_input 
-    puts input
-end
+puts input if debug_input 
